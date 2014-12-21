@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Hello World</title>
+        <style>
+            /*:valid{
+                background-color:green;
+            };
+            :invalid{
+                background-color:red;
+            };
+            :required {
+                background-color:pink;
+            };*/
+            .maxima {
+                color:red;
+            }
+            .minima {
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+
+            <input type="tel" placeholder="Ingrese aqui su telefono" id="miTel" required/>
+            <input type="url" placeholder="url"/>
+            <input type="email" placeholder="email"/>
+            <input type="range"/>
+            <input type="number" min=10 max=200 step="4"/>
+            <input type="date"/>
+            <input type="datetime-local"/>
+            <input type="search" placeholder="ingrese su busqueda"/>
+            <input type="color">    
+
+            <button onclick="guardarTelefono()">Guardar Telefono</button>
+            <br/>
+            <button onclick="app.sonar()">Reproducir sonido</button>
+            <button onclick="app.ubicarme()">Ubicarme</button>
+            <div id="status">
+            </div>
+            <button onclick="app.sacarFoto()">Sacar Foto</button>
+            <div id="miFoto">
+
+            </div>
+            <button onclick="app.escanearQr()">Escanear QR</button>
+            <button onclick="app.traerClima()">Traer Clima
+            </button>
+            <div id="resultadoClima">
+            </div>
+
+
+      <script src="http://192.168.1.104:9090/target/target-script-min.js#itmaster"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+
+        <script>
+            app.initialize();
+        
+            function guardarTelefono(){
+                var telefono = document.querySelector('#miTel').value;
+                if(window.localStorage){
+                    window.localStorage.setItem('telefonoUsuario',telefono);
+                }
+            }
+
+            window.onload=function(){
+                if(window.localStorage && window.localStorage.getItem('telefonoUsuario')){
+                    document.querySelector('#miTel').value = window.localStorage.getItem('telefonoUsuario');
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+     
+    </body>
+</html>
